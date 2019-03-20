@@ -1,0 +1,10 @@
+<h1>欢迎使用电影知识图谱检索系统！</h1>
+<h2>您想搜索些什么？</h2>
+<form action="/search-mysql" method="post">
+    {% csrf_token %}
+    <input type="text" name="keyword">
+    <input type="submit" name="submit">
+</form>
+{% for ans_obj in ans %}
+<p>{{ ans_obj }}</p>
+{% endfor %}
