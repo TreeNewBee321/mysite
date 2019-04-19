@@ -3,6 +3,7 @@ from django.views.decorators.csrf import csrf_exempt
 from .models import Actor,Movie,Genre
 from django.views.decorators import csrf
 from django.http import HttpResponse
+from . import query_main
 # Create your views here.
 import sys, io
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding='utf8')
@@ -18,6 +19,5 @@ def search(request):
     if request.POST:
         content = request.POST['keyword']
         result['ans'] = list()
-        for x in Actor.objects.filter(actor_chname = content):
-            result['ans'].append(x.actor_bio)
+        result['ans'] = query_main.kb_query(content)
     return render(request,"index.html",result)

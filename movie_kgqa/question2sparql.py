@@ -1,5 +1,5 @@
-import question_temp
-import word_tagging
+from . import question_temp
+from . import word_tagging
 
 
 class Question2Sparql:
